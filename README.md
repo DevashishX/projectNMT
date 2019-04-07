@@ -15,6 +15,7 @@
  English to French to en_fr
 
 *How to use:*
+0. open a shell/terminal in repository and run `./rest_server.py`
 1. REST server runs on `localhost:5000/translate`
 2. Use the following JSON object to send translation requests to rest server:\
 ```javascript
