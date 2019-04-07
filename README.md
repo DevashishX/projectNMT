@@ -14,4 +14,27 @@
 4. Make sure you create two folders `en_de` and `en_fr` at this directory level\
  Add fairseq model files (only files - generally 4 per model) for \
  English to German to en_de\
- English to French to en_fr
+ English to French to en_fr\
+
+*How to use:*
+1. REST server runs on `localhost:5000/translate`
+2. Use the following JSON object to send translation requests to rest server:\
+```javascript
+
+{
+    "src_lang" : "en",
+    "tgt_lang" : "de" or "fr",
+    "text" : "text to translate"
+}
+
+```
+3. The response for the request will take about 10s to arrive, it will arrive in the following form:
+```javascript
+
+{
+    "text" : "translated text",
+    "err_no" : error number,
+    "err" : "error descr"
+}
+
+```
