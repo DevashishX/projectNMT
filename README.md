@@ -15,9 +15,9 @@
  English to French to en_fr
 
 *How to use:*
-0. open a shell/terminal in repository and run `./rest_server.py`
-1. REST server runs on `localhost:5000/translate`
-2. Use the following JSON object to send translation requests to rest server:\
+1. open a shell/terminal in repository and run `./rest_server.py`
+2. REST server runs on `localhost:5000/translate`
+3. Use the following JSON object to send translation requests to rest server:\
 ```javascript
 
 {
@@ -27,7 +27,7 @@
 }
 
 ```
-3. The response for the request will take about 10s to arrive, it will arrive in the following form:
+4. The response for the request will take about 10s to arrive, it will arrive in the following form:
 ```javascript
 
 {
