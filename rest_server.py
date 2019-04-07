@@ -1,4 +1,5 @@
-#!/home/devashish/Documents/fairseq_nmt/fairenv/bin/python3
+#!/usr/bin/env python3
+
 from flask import Flask, jsonify, abort, request
 from driver import *
 
