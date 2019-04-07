@@ -14,4 +14,4 @@
 4. Make sure you create two folders `en_de` and `en_fr` at this directory level\
  Add fairseq model files (only files - generally 4 per model) for \
  English to German to en_de\
- English to French to en_fr\
+ English to French to en_fr
