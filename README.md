@@ -1,9 +1,9 @@
 # Language Translation using Recurrent Neural Networks
 
-## Created by
-## Devashish Gaikwad 111608023
-## Atharva Jadhav 111608031
-## COEP Third Year Information Technology
+### Created by
+### Devashish Gaikwad 111608023
+### Atharva Jadhav 111608031
+### COEP Third Year Information Technology
 
 *Make sure these requirements are satisfied:*
 1. Make sure your python version is 3.6 and has installed the libraries mentioned in `requirements.txt`\
