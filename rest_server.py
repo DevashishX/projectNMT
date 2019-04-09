@@ -3,8 +3,9 @@
 from flask import Flask, jsonify, abort, request
 from driver import *
 
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 """
 JSON API:
 incoming : 
