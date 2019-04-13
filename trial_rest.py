@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, abort, request
-from driver import *
-
+from datetime import datetime
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -38,24 +37,15 @@ def return_translated_json(text, err_no = 200, err = "OK"):
 
 
 @app.route("/", methods=["GET", "POST"])
-def index_handler():
-    return "Please access localhost:5000/translate for rest API"
-
 @app.route("/translate", methods = ["GET", "POST"])
 def translate_handler():
     if not request.json or not translate_req_checker(request.json):
         return return_translated_json("", 400, "Bad Request")
-    translated_text = driver(src_lang=request.json["src_lang"],
-                            tgt_lang=request.json["tgt_lang"],
-                            input_str=request.json["text"])
+    print(request.json)
+    translated_text = str(datetime.now()) + " Devashish Says Hi ! :)"
     return return_translated_json(translated_text)
     
 
-@app.route("/translate/text", methods =["GET", "POST"])
-def textfile_handler():
-    print("data ", request.data, "header ", request.headers, "URL ", request.url)
-    return "SuccessRecvd"
-
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

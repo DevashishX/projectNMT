@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Language Translation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+	body {
+		font-family: -apple-system, sans-serif;
+		background-color: #fafafa;
+	}
+	.column {
+  		float: left;
+	  	width: 50%;
+	}
+	
+/* Clear floats after the columns */
+	.row:after {
+  		content: "";
+  		display: table;
+  		clear: both;
+	}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<h2 align="center">Software Engineering</h2><br>
+	<div class="jumbotron">
+		<p>The project aims to create a English to German and English to French bidirectional language 
+		translation model based on the reference research papers mentioned below. The deep learning 
+		neural network model architecture consists of encoder decoder pair of recurrent neural network 
+		to achieve sequence to sequence phrase translation between the languages.</p>
+	</div>
+	<div >
+		<div class="row" align="center">
+			<div class="column">
+				<h3>Input</h3> <br>
+				<input type="text" name="translate" id="translate" placeholder="Enter Text"><br> <br>
+				<input type="button" class="btn btn-primary" value="Translate" onclick="sendRequest()">
+				<br><br><br><br><br>
+				<button type="button" class="btn">More Info</button> <br>
+			</div>
+				<div class="column">
+				<h3 align="center">Output</h3> <br>
+				<input type="text" name="Text" id="result" placeholder="Translation"><br> <br>
+				<input type="button" class="btn btn-primary" value="Copy" id="copy-btn" onclick="copyToClipBoard()">
+				<br><br><br><br><br>
+				<a href="https://github.com/DevashishX/projectNMT/">
+					<i class="fa fa-github" style="font-size:30px"></i>GitHub
+				</a>
+				</div>
+		</div>
+	</div>
+</div>
+<script>
+	function sendRequest() {
+		console.log(document.getElementById('translate').value)
+	if(document.getElementById('translate').value != "") {
+		$.ajax({
+			url : "http://localhost:5000/translate",
+			type:'post',
+			dataType : 'json',
+			contentType:'application/json',
+			data : JSON.stringify({src_lang: "en",
+    		tgt_lang : "de",
+    		text : document.getElementById('translate').value}),
+			success : function(data) {
+				document.getElementById('result').value = data['text']
+				console.log(data)
+			},
+			error : function(err) {
+				console.log(err)
+			}
+		});
+	}
+}
+function copyToClipBoard() {
+		document.getElementById('result').select();
+		document.execCommand('copy');
+	}
+
+</script>
+</body>
+</html>
