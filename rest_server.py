@@ -77,24 +77,7 @@ def translate_handler():
     
 
 
-@app.route("/translate/text", methods =["POST"])
-def textfile_handler():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part')
-            return return_json_error()
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return return_json_error()
-        if file and allowed_file(file.filename) and is_textfile(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            extracted = file.read()
-            print(extracted)
-            print(request.is_json())
-            return return_translated_json("file received")
-    return return_json_error()
+
 
 
 if __name__ == "__main__":
