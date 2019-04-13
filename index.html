@@ -26,6 +26,25 @@
   		display: table;
   		clear: both;
 	}
+	.btn-file {
+    position: relative;
+    overflow: hidden;
+	}
+	.btn-file input[type=file] {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    min-width: 100%;
+	    min-height: 100%;
+	    font-size: 100px;
+	    text-align: right;
+	    filter: alpha(opacity=0);
+	    opacity: 0;
+	    outline: none;
+	    background: white;
+	    cursor: inherit;
+	    display: block;
+	}
 </style>
 </head>
 <body>
@@ -42,45 +61,75 @@
 		<div class="row" align="center">
 			<div class="column">
 				<h3>Input</h3> <br>
-				<input type="text" name="translate" id="translate" placeholder="Enter Text"><br> <br>
-				<input type="button" class="btn btn-primary" value="Translate" onclick="sendRequest()">
-				<br><br><br><br><br>
+				<input type="text" name="translate" id="translate" placeholder="Enter Text">
+				<input type="button" class="btn btn-primary" value="Translate" onclick="sendRequest()"> <br> <br>
+				<span class="btn btn-default btn-file">
+    				Upload<input type="file">
+				</span>
+				<br> <br>
+				<form>
+					<label class="radio-inline"><input type="radio" name="optradio" value="de" checked="true">German</label>
+					<label class="radio-inline"><input type="radio" name="optradio" value="fr">French</label>
+				</form>
+				<br><br>
 				<button type="button" class="btn">More Info</button> <br>
 			</div>
 				<div class="column">
-				<h3 align="center">Output</h3> <br>
-				<input type="text" name="Text" id="result" placeholder="Translation"><br> <br>
-				<input type="button" class="btn btn-primary" value="Copy" id="copy-btn" onclick="copyToClipBoard()">
-				<br><br><br><br><br>
-				<a href="https://github.com/DevashishX/projectNMT/">
-					<i class="fa fa-github" style="font-size:30px"></i>GitHub
-				</a>
+					<h3 align="center">Output</h3> <br>
+					<input type="text" name="Text" id="result" placeholder="Translation"><br> <br>
+					<input type="button" class="btn btn-primary" value="Copy" id="copy-btn" onclick="copyToClipBoard()">
+					<br><br><br><br><br>
+					<a href="https://github.com/DevashishX/projectNMT/">
+						<i class="fa fa-github" style="font-size:30px"></i>GitHub
+					</a>
 				</div>
 		</div>
 	</div>
 </div>
 <script>
+	var x = document.getElementById("lang").value; 
 	function sendRequest() {
 		console.log(document.getElementById('translate').value)
-	if(document.getElementById('translate').value != "") {
-		$.ajax({
-			url : "http://localhost:5000/translate",
-			type:'post',
-			dataType : 'json',
-			contentType:'application/json',
-			data : JSON.stringify({src_lang: "en",
-    		tgt_lang : "de",
-    		text : document.getElementById('translate').value}),
-			success : function(data) {
-				document.getElementById('result').value = data['text']
-				console.log(data)
-			},
-			error : function(err) {
-				console.log(err)
-			}
-		});
+		if(document.getElementById('translate').value != "") {
+			$.ajax({
+				url : "http://localhost:5000/translate",
+				type:'post',
+				dataType : 'json',
+				contentType:'application/json',
+				data : JSON.stringify({src_lang: "en",
+				tgt_lang : x,
+				text : document.getElementById('translate').value}),
+				success : function(data) {
+					document.getElementById('result').value = data['text']
+					console.log(data)
+				},
+				error : function(err) {
+					console.log(err)
+				}
+			});
+		}
 	}
-}
+	function sendFileRequest() {
+		console.log(document.getElementById('translate').value)
+		if(document.getElementById('translate').value != "") {
+				$.ajax({
+				url : "http://localhost:5000/translate",
+				type:'post',
+				dataType : 'json',
+				contentType:'text/plain',
+				data : JSON.stringify({src_lang: "en",
+				tgt_lang : x,
+				text : document.getElementById('translate').value}),
+				success : function(data) {
+					document.getElementById('result').value = data['text']
+					console.log(data)
+				},
+				error : function(err) {
+					console.log(err)
+				}
+			});
+		}
+	}
 function copyToClipBoard() {
 		document.getElementById('result').select();
 		document.execCommand('copy');
