@@ -1,0 +1,1 @@
+Das Projekt zielt darauf ab , ein Modell der Übersetzung von Englisch nach Deutsch und von Englisch nach Französisch zu erstellen .

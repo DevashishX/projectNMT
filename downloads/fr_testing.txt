@@ -1,0 +1,1 @@
+Le projet vise à créer un modèle de traduction anglais @-@ allemand et anglais @-@ français .

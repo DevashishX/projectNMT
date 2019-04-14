@@ -1,0 +1,1 @@
+The project aims to create a English to German and English to French language translation model

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Language Translation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+	body {
+		font-family: -apple-system, sans-serif;
+		background-color: #fafafa;
+	}
+	.column {
+  		float: left;
+	  	width: 50%;
+	}
+	
+
+	.row:after {
+  		content: "";
+  		display: table;
+  		clear: both;
+	}
+	.btn-file {
+    position: relative;
+    overflow: hidden;
+	}
+	.btn-file input[type=file] {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    min-width: 100%;
+	    min-height: 100%;
+	    font-size: 100px;
+	    text-align: right;
+	    filter: alpha(opacity=0);
+	    opacity: 0;
+	    outline: none;
+	    background: white;
+	    cursor: inherit;
+	    display: block;
+	}
+	#foo {
+    	position: fixed;
+    	bottom: 0;
+    	right: 0;
+  	}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<h2 align="center">Software Engineering</h2><br>
+	<div class="jumbotron">
+		<p>The project aims to create a English to German and English to French language 
+		translation model based on the reference research papers mentioned below. The deep learning 
+		neural network model architecture consists of encoder decoder pair of recurrent neural network 
+		to achieve sequence to sequence phrase translation between the languages.</p>
+	</div>
+	<div >
+		<div class="row" align="center">
+			<div class="column">
+				<h3>German</h3> <br>
+				<form id = "textfile" action="http://localhost:5000/translate/file/de" method=post enctype=multipart/form-data>
+					<input type=file name=file>
+					<input type=submit value=Upload>
+				</form> <br>
+				<br><br>
+			</div>
+			<div class="column">
+				<h3 align="center">French</h3> <br>
+				<form id = "textfile" action="http://localhost:5000/translate/file/fr" method=post enctype=multipart/form-data>
+					<input type=file name=file>
+					<input type=submit value=Upload>
+				</form>
+
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="foo">
+	<a href="http://localhost:5000/index.html"> Home</a>
+</div>
+</body>
+</html>
