@@ -1,11 +1,14 @@
-import subprocess
+import subprocess, re
 
 def post_process(text=""):
-    new_text = text.replace("&apos; ", "'").replace("@@", "")
+    new_text = text.replace("&apos; ", "'").replace("@@", "").replace("\n", " ").replace("@-@", "")
     return new_text
 
 def trans_process(text=""):
-    new_text = text.replace(".", " ").replace(",", " ")
+    new_text = text.replace(".", " ").replace(",", " ").replace("\n", " ").replace("'", " ").replace("-", " ")
+    new_text = re.sub('\d', " ", new_text)
+    #new_text = re.sub(r'[^\w]', " ", new_text)
+    print(new_text)
     return new_text
 
 def driver(src_lang = "en", tgt_lang = "de", input_str = "How are you ?"):

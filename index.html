@@ -45,6 +45,16 @@
 	    cursor: inherit;
 	    display: block;
 	}
+	a:hover {
+	  	color: red;
+	  	background-color: transparent;
+	  	text-decoration: underline;
+	}
+	a:active {
+	  	color: yellow;
+		background-color: transparent;
+		text-decoration: underline;
+	}
 </style>
 </head>
 <body>
@@ -52,7 +62,7 @@
 <div class="container">
 	<h2 align="center">Software Engineering</h2><br>
 	<div class="jumbotron">
-		<p>The project aims to create a English to German and English to French bidirectional language 
+		<p>The project aims to create a English to German and English to French language 
 		translation model based on the reference research papers mentioned below. The deep learning 
 		neural network model architecture consists of encoder decoder pair of recurrent neural network 
 		to achieve sequence to sequence phrase translation between the languages.</p>
@@ -61,33 +71,32 @@
 		<div class="row" align="center">
 			<div class="column">
 				<h3>Input</h3> <br>
-				<input type="text" name="translate" id="translate" placeholder="Enter Text">
-				<input type="button" class="btn btn-primary" value="Translate" onclick="sendRequest()"> <br> <br>
-				<span class="btn btn-default btn-file">
-    				Upload<input type="file">
-				</span>
-				<br> <br>
+				<textarea rows="5" cols = "58" id="translate" placeholder="Enter Text"></textarea> <br> <br>
 				<form>
-					<label class="radio-inline"><input type="radio" name="optradio" value="de" checked="true">German</label>
-					<label class="radio-inline"><input type="radio" name="optradio" value="fr">French</label>
+					<label class="radio-inline"><input type="radio" class="lang" name="lang" value="de" checked>German</label>
+					<label class="radio-inline"><input type="radio" class="lang" name="lang" value="fr">French</label>
+					<input type="button" class="btn btn-primary" value="Translate" onclick="sendRequest()">
 				</form>
-				<br><br>
-				<button type="button" class="btn">More Info</button> <br>
+				<br><br> <br>
+					<span>
+						<a href="http://localhost:5000/upload.html" class="btn btn-primary" target="_blank">Upload</a> <br><br> <br>
+					</span><br>
+						<a href="http://localhost:5000/feedback.html" class="btn btn-primary" target="_blank">Submit Feedback</a> <br><br> <br>
 			</div>
 				<div class="column">
 					<h3 align="center">Output</h3> <br>
-					<input type="text" name="Text" id="result" placeholder="Translation"><br> <br>
+					<textarea rows="5" cols="58" id="result" placeholder="Translation"></textarea><br> <br>
 					<input type="button" class="btn btn-primary" value="Copy" id="copy-btn" onclick="copyToClipBoard()">
-					<br><br><br><br><br>
+					<br><br><br> <br>
+									<button type="button" class="btn btn-primary">More Info</button> <br> <br><br> <br>
 					<a href="https://github.com/DevashishX/projectNMT/">
-						<i class="fa fa-github" style="font-size:30px"></i>GitHub
+						<i class="fa fa-github" style="font-size:30px"></i> GitHub
 					</a>
 				</div>
 		</div>
 	</div>
 </div>
 <script>
-	var x = document.getElementById("lang").value; 
 	function sendRequest() {
 		console.log(document.getElementById('translate').value)
 		if(document.getElementById('translate').value != "") {
@@ -97,7 +106,7 @@
 				dataType : 'json',
 				contentType:'application/json',
 				data : JSON.stringify({src_lang: "en",
-				tgt_lang : x,
+				tgt_lang : $(".lang:checked").val(),
 				text : document.getElementById('translate').value}),
 				success : function(data) {
 					document.getElementById('result').value = data['text']
@@ -109,17 +118,18 @@
 			});
 		}
 	}
-	function sendFileRequest() {
-		console.log(document.getElementById('translate').value)
-		if(document.getElementById('translate').value != "") {
+
+
+	function sendFile() {
+		console.log(document.getElementById('translatedoc').value)
+		if(document.getElementById('translatedoc').value != "") {
 				$.ajax({
-				url : "http://localhost:5000/translate",
+				url : "http://localhost:5000/translate/text",
 				type:'post',
-				dataType : 'json',
-				contentType:'text/plain',
+				contentType:'application/json',
 				data : JSON.stringify({src_lang: "en",
-				tgt_lang : x,
-				text : document.getElementById('translate').value}),
+				tgt_lang : $(".lang:checked").val(),
+				text : document.getElementById('translatedoc').value}),
 				success : function(data) {
 					document.getElementById('result').value = data['text']
 					console.log(data)
@@ -130,6 +140,8 @@
 			});
 		}
 	}
+
+	
 function copyToClipBoard() {
 		document.getElementById('result').select();
 		document.execCommand('copy');
@@ -138,3 +150,4 @@ function copyToClipBoard() {
 </script>
 </body>
 </html>
+	
