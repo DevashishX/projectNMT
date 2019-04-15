@@ -7,7 +7,7 @@ def post_process(text=""):
 def trans_process(text=""):
     new_text = text.replace(".", " ").replace(",", " ").replace("\n", " ").replace("'", " ").replace("-", " ")
     new_text = re.sub('\d', " ", new_text)
-    #new_text = re.sub(r'[^\w]', " ", new_text)
+    new_text = re.sub(r'[^\w]', " ", new_text)
     print(new_text)
     return new_text
 

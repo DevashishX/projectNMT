@@ -146,6 +146,15 @@ def feedbackhtml_handler():
 def thankyouhtml_handler():
     return send_file("thankyou.html")
 
+@app.route("/moreinfo.html", methods=["GET", "POST"])
+def moreinfohtml_handler():
+    return send_file("moreinfo.html")
+
+@app.route("/favicon.ico", methods=["GET", "POST"])
+def faviconico_handler():
+    return send_file("favicon.ico")
+
+
 @app.route("/translate", methods = ["GET", "POST"])
 def translate_handler():
     print(request.json)
