@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Language Translation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+	body {
+		font-family: -apple-system, sans-serif;
+		background-color: #fafafa;
+	}
+	.column {
+  		float: left;
+	  	width: 50%;
+	}
+	#foo {
+    	position: fixed;
+    	bottom: 0;
+    	right: 0;
+    	padding-bottom: 10px;
+    	padding-right: 15px;
+  	}
+  	a {
+  		width: 90%;
+  		align-self: center;
+  	}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<h2 align="center">Software Engineering</h2><br>
+	<div class="jumbotron">
+		<p>The project aims to create a English to German and English to French language 
+		translation model based on the reference research papers mentioned below. The deep learning 
+		neural network model architecture consists of encoder decoder pair of recurrent neural network 
+		to achieve sequence to sequence phrase translation between the languages.</p>
+	</div>
+	<br>
+
+	<div class="column">
+		<a href="https://www.cs.cmu.edu/~awb/papers/eurospeech2003/speechalator.pdf" class="btn btn-primary" target="_blank">Speechalator: two-way speech-to-speech translation</a> <br><br>
+		<a href="https://arxiv.org/pdf/1309.4168.pdf" class="btn btn-primary" target="_blank">Exploiting Similarities among Languages for Machine Translation</a> <br><br>
+		<a href="https://arxiv.org/pdf/1406.1078.pdf" class="btn btn-primary" target="_blank">Learning Phrase Representations using RNN Encoder–Decoder</a> <br><br>
+		<a href="https://arxiv.org/pdf/1409.0473.pdf" class="btn btn-primary" target="_blank">Neural Machine Translation</a> <br><br>
+		<a href="https://aclweb.org/anthology/D15-1166" class="btn btn-primary" target="_blank">Effective Approaches to Attention-based Neural Machine Translation</a> <br><br>
+	</div>
+	<div class="column" align="left">
+		<a href="https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf" class="btn btn-primary" target="_blank">Sequence to Sequence Learning with Neural Networks</a> <br><br>
+		<a href="https://pdfs.semanticscholar.org/1401/b98a6eb0b0ddaf5bdfd559ed1766434446b8.pdf" class="btn btn-primary" target="_blank">Continuous Space Translation Models with Neural Networks</a> <br><br>
+		<a href="https://www.aclweb.org/anthology/P02-1040.pdf" class="btn btn-primary" target="_blank">BLEU: a Method for Automatic Evaluation of Machine Translation</a> <br><br>
+		<a href="https://arxiv.org/pdf/1706.03762.pdf" class="btn btn-primary" target="_blank">Attention Is All You Need</a> <br><br>
+		<a href="https://github.com/pytorch/fairseq" class="btn btn-primary" target="_blank">FairSeq: Facebook AI Research Sequence-to-Sequence Toolkit</a> <br><br>
+	</div>
+
+	<div id="foo">
+		<a href="http://localhost:5000/index.html">Home</a>
+	</div>
+</div>
+</body>
+</html>
