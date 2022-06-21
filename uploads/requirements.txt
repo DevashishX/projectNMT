@@ -5,7 +5,7 @@ Flask-Cors==3.0.7
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
-numpy==1.16.2
+numpy==1.22.0
 Pillow>=6.2.2
 pytz==2018.9
 simple-http-server==0.1.7
